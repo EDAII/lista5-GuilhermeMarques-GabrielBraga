@@ -12,7 +12,7 @@ function mousePressed() {
 
 function draw() {
     // put drawing code here
-    background(51)
+    background(30)
     let visited = []
     let unvisited = []
     arrayCopy(points, unvisited)
