@@ -10,6 +10,15 @@ function mousePressed() {
     points.push(p)
 }
 
+function heat(minimum, maximum, value) {
+    ratio = 2 * (value - minimum) / (maximum - minimum)
+    b = int(max(0, 255*(1 - ratio)))
+    r = int(max(0, 255*(ratio - 1)))
+    g = 255 - b - r
+    heatMap = createVector(r,g,b)
+    return heatMap
+}
+
 function draw() {
     // put drawing code here
     background(30)
@@ -38,7 +47,8 @@ function draw() {
         }
         var p1 = visited[vIndex]
         var p2 = unvisited[unvIndex]
-        stroke(150,155,250)
+        c = heat(1,width/5,limit)
+        stroke(c.x,c.y,c.z)
         strokeWeight(2)
         line(p1.x, p1.y, p2.x, p2.y)
         visited.push(p2)
