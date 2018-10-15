@@ -1,10 +1,20 @@
+var points = []
+
 function setup() {
     // put setup code here
-    createCanvas(600, 400)
+    createCanvas(windowWidth, windowHeight)
     background("#ccc")
+}
+
+function mousePressed() {
+    var p = createVector(mouseX, mouseY)
+    points.push(p)
 }
 
 function draw() {
     // put drawing code here
-    ellipse(width/2, height/2, 32, 32)
+    points.forEach(point => {
+        noStroke()
+        ellipse(point.x, point.y, 16, 16)
+    })
 }
